@@ -1,3 +1,5 @@
+// database ma connect karva
+
 const mongoose = require('mongoose');
 
 const Connect = async() =>{
