@@ -1,9 +1,15 @@
 const express = require("express");
 const Connect = require("./Config/DataBase");
 const UserRouter = require("./Routes/User.Route");
+const cookie = require('cookie-parser')
+
+require("dotenv").config();
+
+
 const app = express();
 app.use(express.json());
-require("dotenv").config();
+app.use(cookie())
+
 
 // ejs code
 app.set('view engine', 'ejs');
