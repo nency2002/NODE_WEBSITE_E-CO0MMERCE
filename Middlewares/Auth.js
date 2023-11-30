@@ -6,7 +6,8 @@ const Auth = ( req , res , next)=>{
     let {token}  = req.cookies;
     if(token){
         let decoded = jwt.verify(token , "token");
-        req.body.id = decoded.id;
+        req.body.userID = decoded.id;
+        // console.log(decoded);
         next();
     }
     else{

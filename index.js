@@ -1,7 +1,8 @@
 const express = require("express");
 const Connect = require("./Config/DataBase");
 const UserRouter = require("./Routes/User.Route");
-const cookie = require('cookie-parser')
+const cookie = require('cookie-parser');
+const ProRouter = require("./Routes/Product.Route");
 
 require("dotenv").config();
 
@@ -18,6 +19,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended : true }));
 
 app.use("/User", UserRouter)
+app.use("/Product" , ProRouter)
 
 Connect();
 app.listen(process.env.PORT , ()=>{

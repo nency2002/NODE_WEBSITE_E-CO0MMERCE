@@ -49,7 +49,7 @@ const LoginData = async (req, res) => {
             bcrypt.compare(password, data.password , (err,result) =>{
                 if(result){
                     let token = jwt.sign({id :data._id},"token");
-                    res.cookie("token",token).redirect('/User/Home')
+                    res.cookie("token",token).redirect('/Product/Post')
                 }
                 else{
                     res.send("paassword incorrent");
@@ -62,9 +62,4 @@ const LoginData = async (req, res) => {
     }
 }
 
-//home mate jo login hoy to home pages open thay
-const HomeRender =  (req, res) => {
-    res.render("home")
-}
-
-module.exports ={SignRender , SignupData , LoginData , LoginRender , HomeRender}
+module.exports ={SignRender , SignupData , LoginData , LoginRender }
