@@ -1,7 +1,6 @@
 const {Router} = require ('express');
 const Auth = require('../Middlewares/Auth');
-const { HomeRender, ProPost } = require('../Controllers/Product.Controllers');
-const ProModel = require('../Models/Product.Schema');
+const { HomeRender, ProPost, Products } = require('../Controllers/Product.Controllers');
 
 
 const ProRouter = Router();
@@ -12,13 +11,7 @@ ProRouter.get("/Post" ,Auth, HomeRender )
 ProRouter.post("/Post" ,Auth, ProPost)
 
 //je user login hoy temana data jova
-ProRouter.get("/PostGet" ,Auth, async (req , res) => {
-    let data = await ProModel.find({userId : req.body.userID});
-    console.log(data);
-    // res.json({data : data});
-    res.send(data);
-
-})
+ProRouter.get("/PostGet" ,Auth, Products)
 
 
 module.exports = ProRouter;
