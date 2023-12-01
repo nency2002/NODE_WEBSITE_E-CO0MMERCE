@@ -14,6 +14,10 @@ const ProPost = async (req, res) => {
 
 //admin panel jo user login to temna post karela data dekhay
 
+const Products = async (req , res) => {
+    let data = await ProModel.find({userID:req.body.userID});
+    res.send({prodata:data})
 
+}
 
-module.exports = {HomeRender , ProPost}
+module.exports = {HomeRender , ProPost , Products}
