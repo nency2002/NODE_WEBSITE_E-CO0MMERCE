@@ -6,9 +6,9 @@ const ProSchema = new mongoose.Schema({
     image:String,
     category:String,
     price:Number,
-    userID:String
+    userID:{ type: mongoose.Schema.Types.ObjectId, ref: "User" }
 })
 
-const ProModel = mongoose.model('Product' , ProSchema)
+const Product = mongoose.model('Product' , ProSchema)
 
-module.exports = ProModel
+module.exports = Product

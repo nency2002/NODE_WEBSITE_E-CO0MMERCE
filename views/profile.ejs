@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>Profile Page</title>
     <style>
         body {
             background: #dde1e7;
@@ -93,23 +93,24 @@
 
         <script>
 
-            fetch("/Product/All")
+            fetch("/Product/UserProduct")
                 .then((res) => res.json())
                 .then((data) => display(data));
 
 
-
-            const cart = (id) => {
-                console.log(id);
-                fetch(`/Product/Cart/${id}`, {
-                    method: "POST",
-                    headers: { "Content-type": "application/json " },
-                    body: JSON.stringify({ productID: id }),
+            const pro_delete = (id) => {
+                fetch(`/product/delete/${id}`, {
+                    method: "delete",
                 })
-                    .then((response) => response.json())
-                    .then((data) => console.log(data));
+                    .then((res) => res.json())
+                    .then((data) => {
+                        const deletedElement = document.getElementById(id);
+                        if (deletedElement) {
+                            deletedElement.remove();
+                        }
+                    })
+                    .catch((error) => console.error(error));
             };
-
 
             const display = (data) => {
                 document.getElementById("box").innerHTML = " ";
@@ -123,10 +124,10 @@
                     let price = document.createElement("h3");
                     price.innerHTML = ` Price : ${ele.price}`;
                     let btn1 = document.createElement("button");
-                    btn1.innerHTML = "Add to cart";
-                    btn1.addEventListener("click", () => cart(ele._id));
-
+                    btn1.innerHTML = "delete";
+                    btn1.addEventListener("click", () => pro_delete(ele._id));
                     let div = document.createElement("div");
+                    div.id = ele._id;
                     div.append(img, title, des, price, btn1);
                     document.getElementById("box").append(div);
                 });
