@@ -93,27 +93,16 @@
 
         <script>
 
-            fetch("/Product/All")
+            fetch("/Product/CartData")
                 .then((res) => res.json())
                 .then((data) => display(data));
 
 
 
-            const cart = (id) => {
-                console.log(id);
-                fetch(`/Product/Cart/${id}`, {
-                    method: "POST",
-                    headers: { "Content-type": "application/json " },
-                    body: JSON.stringify({ productID: id }),
-                })
-                    .then((response) => response.json())
-                    .then((data) => console.log(data));
-            };
-
-
             const display = (data) => {
                 document.getElementById("box").innerHTML = " ";
-                data.map((ele) => {
+                data.map((element) => {
+                    let ele = element.productID
                     let img = document.createElement("img");
                     img.src = ele.image;
                     let title = document.createElement("h1");
@@ -122,12 +111,16 @@
                     des.innerHTML = `Description : ${ele.description}`;
                     let price = document.createElement("h3");
                     price.innerHTML = ` Price : ${ele.price}`;
+
                     let btn1 = document.createElement("button");
-                    btn1.innerHTML = "Add to cart";
-                    btn1.addEventListener("click", () => cart(ele._id));
+                    btn1.innerHTML = "-";
+                    let qty = document.createElement("button");
+                    qty.innerHTML = `QTY ${element.qty}`;
+                    let btn2 = document.createElement("button");
+                    btn2.innerHTML = "+";
 
                     let div = document.createElement("div");
-                    div.append(img, title, des, price, btn1);
+                    div.append(img, title, des, price, btn1 , btn2 , qty);
                     document.getElementById("box").append(div);
                 });
             };
