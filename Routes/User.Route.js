@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { SignupData, SignRender, LoginData, LoginRender, resetpass, verify, ProfileRender } = require('../Controllers/User.Controllers');
+const { SignupData, SignRender, LoginData, LoginRender, Reset, Verify, ProfileRender } = require('../Controllers/User.Controllers');
 
 
 
@@ -16,11 +16,16 @@ UserRouter.post("/Login", LoginData)
 
 
 // nodemailer
-UserRouter.post("/reset" ,resetpass)
-UserRouter.get("/verify/:otp", verify)
-
+UserRouter.get("/Forget" , (req , res)=>{
+    res.render('forget')
+})
+UserRouter.post("/Sendmail",Reset)
+UserRouter.get("/Verify/:otp",Verify)
 
 //profile 
 UserRouter.get("/profile",ProfileRender)
+
+
+
 
 module.exports = UserRouter

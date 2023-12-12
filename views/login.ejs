@@ -7,14 +7,22 @@
 </head>
 <body>
     <%- include("nav") %>
-    <form action="/User/Login" method="post">
-        <label for="">email</label>
-        <input type="email" name="email">
-
-        <label for="">password</label>
-        <input type="password" name="password">
-
-        <input type="submit" >
-    </form>
+    <div class="bodys">
+    <div class="content">
+        <div class="text">Login Form</div>
+        <form action="/User/Login" method="post">
+          <div class="field">
+            <input type="email" name="email"  placeholder="Enter Your Email"/>
+          </div>
+          <div class="field">
+            <input type="password" name="password" placeholder="Enter Your Password"/>
+          </div>
+          <div class="forgot-pass">
+            <a href="/User/Forget">Forgot Password?</a>
+          </div>
+          <button type="submit" >Sign in</button>
+        </form>
+      </div>
+    </div>
 </body>
 </html>
