@@ -10,7 +10,8 @@
     "mongoose": "^8.0.2",
     "nodemailer": "^6.9.7",
     "nodemon": "^3.0.1",
-    "otp-generator": "^4.0.1"
+    "otp-generator": "^4.0.1",
+    "razorpay": "^2.9.2"
   },
   "name": "node_website_e-co0mmerce",
   "version": "1.0.0",

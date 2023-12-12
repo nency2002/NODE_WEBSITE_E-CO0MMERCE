@@ -1,6 +1,6 @@
 const {Router} = require ('express');
 const {Auth} = require('../Middlewares/Auth');
-const { PostRender, ProPost, Products, all, HomeRender, Deleteproduct  , Cart  , CartDatas , CartRender} = require('../Controllers/Product.Controllers');
+const { PostRender, ProPost, Products, all, HomeRender, Deleteproduct  , Cart  , CartDatas , CartRender, cartqty, payments} = require('../Controllers/Product.Controllers');
 
 
 const ProRouter = Router();
@@ -27,6 +27,15 @@ ProRouter.get("/CartRender" ,CartRender)
 
 
 ProRouter.get("/HomeRender" ,HomeRender)
+
+
+ProRouter.patch("/Crat/Update/:id" , Auth , cartqty)
+
+// payment
+
+ProRouter.post("/Payment" , Auth ,payments)
+
+
 
 
 

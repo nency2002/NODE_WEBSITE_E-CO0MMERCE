@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
 </head>
+
 <body>
     <%- include("nav") %>
-    <form action="/Product/Post" method="post">
-        <label for="">title</label>
-        <input type="text" name="title">
-
-        <label for="">description</label>
-        <input type="text" name="description">
-
-        <label for="">image</label>
-        <input type="url" name="image">
-
-        <label for="">category</label>
-        <input type="text" name="category">
-
-        <label for="">price</label>
-        <input type="number" name="price">
-
-        <input type="submit" >
-    </form>
+    <div class="bodys">
+        <div class="content">
+            <form action="/Product/Post" method="post">
+                <div class="field">
+                    <input type="text" name="title" placeholder="Title" />
+                </div>
+                <div class="field">
+                    <input type="text" name="description" placeholder="description" />
+                </div>
+                <div class="field">
+                    <input type="url" name="image" placeholder="image" />
+                </div>
+                <div class="field mt">
+                    <input type="number" name="price" placeholder="price" />
+                </div>
+                <button type="submit" class="mt">post</button>
+            </form>
+        </div>
+        </div>
 </body>
+
 </html>

@@ -33,7 +33,7 @@ a {
 }
 
 header {
-    background-color: white;
+    background-color: #dde1e7;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
     padding: 15px 0px;
     font-size: 18px;
@@ -52,6 +52,9 @@ header ul li a {
 header .logo a {
     color: red;
     font-weight: 800;
+}
+body{
+    background-color: #dde1e7;
 }
 
 /* form */
@@ -85,7 +88,7 @@ header .logo a {
 
 .field:nth-child(2),
 .field:nth-child(3) {
-    margin-top: 27px;
+    margin: 27px 0px;
 }
 
 .field input {
@@ -119,7 +122,6 @@ header .logo a {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 45px;
     pointer-events: none;
     color: #666666;
 }
@@ -135,7 +137,7 @@ header .logo a {
 
 .forgot-pass a {
     font-size: 16px;
-    color: #3498db;
+    color: red;
     text-decoration: none;
 }
 

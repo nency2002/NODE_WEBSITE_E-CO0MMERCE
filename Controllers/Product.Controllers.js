@@ -1,5 +1,6 @@
 const Product = require('../Models/Product.Schema');
 const cart = require("../Models/Cart.Schema");
+const Razorpay = require('razorpay');
 
 //home mate jo login hoy to home pages open thay
 const PostRender = (req, res) => {
@@ -53,4 +54,40 @@ const CartDatas = async (req , res)=>{
     res.send(data);
 }
 
-module.exports = { PostRender, ProPost, Products, all, HomeRender ,Deleteproduct , Cart , CartDatas , CartRender}
+const cartqty = async (req, res) =>{
+    let {id} = req.params
+    let {val} = req.body
+    let data = await cart.findById(id)
+    if(data.qty ==1 & val == -1){
+        await cart.findByIdAndDelete(id);
+        return res.send({status : "success"})
+    }
+   
+    data.qty = data.qty+val
+    await data.save()
+    res.send(data);
+}
+
+// payments
+var razorpay = new Razorpay({
+    key_id: 'rzp_test_67TKW3OGPNMj27',
+    key_secret: 'hyczz38bwQ7oe7lI65LqazeJ',
+  });
+
+  const payments = async (req, res) =>{
+        let {amount} = req.body
+        let options ={
+            amount : amount*100,
+        }
+        razorpay.orders.create(options , (err, order) =>{
+            if(err){
+                console.log(err);
+                res.send({data : err.message});
+            }
+            else{
+                res.send(order)
+            }
+        })
+  }
+
+module.exports = { PostRender, ProPost, Products, all, HomeRender ,Deleteproduct , Cart , CartDatas , CartRender , cartqty , payments}

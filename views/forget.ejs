@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include("nav") %>
+    <div class="bodys">
+        <div class="content">
+            <div class="text">Forget Password </div>
+            <form action="/User/Sendmail" method="post">
+              <div class="field">
+                <input type="email" class="inputFields" id="email" name="email" placeholder="Email" value=""
+                    required />
+              </div>
+              <button type="submit" >Get otp</button>
+            </form>
+          </div>
+        </div>
+</body>
+
+
+</html>
